@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUGAAD UNLIMITED</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div id="app-container">
+        
+        <!-- Sidebar Navigation (Hidden by default) -->
+        <nav id="sidebar" class="hidden">
+            <div class="logo">
+                JUGAAD<span class="accent">.</span>
+                <p class="tagline">Unlimited</p>
+            </div>
+            <ul class="nav-links">
+                <li data-target="dashboard" class="active">Dashboard</li>
+                <li data-target="roadmap">My Roadmap</li>
+                <li data-target="resources">Resources</li>
+                <li data-target="progress">Progress</li>
+                <li data-target="profile">Profile</li>
+            </ul>
+            <div class="sidebar-footer">
+                <button id="btn-logout" class="btn-text">Reset App</button>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main id="main-content">
+
+            <!-- 1. WELCOME SCREEN -->
+            <section id="welcome" class="view-section active">
+                <div class="welcome-card">
+                    <h1>JUGAAD UNLIMITED</h1>
+                    <h2 class="subtitle">"One Goal. One Roadmap. One Next Step."</h2>
+                    <p class="desc">Stop getting lost in endless courses and tutorials.<br>Build a learning path based on your current skills and career goal.</p>
+                    <div class="btn-group">
+                        <button id="btn-create-roadmap" class="btn-primary">Create My Roadmap</button>
+                        <button id="btn-demo" class="btn-secondary">Try Demo</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. STUDENT PROFILE FORM -->
+            <section id="student-form" class="view-section">
+                <div class="form-card">
+                    <h2>Student Profile</h2>
+                    <p class="text-muted">Tell us about yourself to build your personalized roadmap.</p>
+                    
+                    <form id="profile-form">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="input-name" placeholder="E.g. Jane Doe" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Career Goal</label>
+                            <select id="input-career" required>
+                                <option value="" disabled selected>Select a goal...</option>
+                                <option value="Cybersecurity Analyst">Cybersecurity Analyst</option>
+                                <option value="Full Stack Developer">Full Stack Developer</option>
+                                <option value="AI / ML Engineer">AI / ML Engineer</option>
+                                <option value="Data Analyst">Data Analyst</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Current Skills</label>
+                            <div class="skill-input-wrapper">
+                                <input type="text" id="input-skill" placeholder="E.g. Python">
+                                <button type="button" id="btn-add-skill" class="btn-outline">+ Add</button>
+                            </div>
+                            <div id="skill-chips-container" class="chip-container">
+                                <!-- Skill chips will be appended here -->
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary full-width mt-4">Analyze My Skills</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- 3. SKILL ANALYSIS SCREEN -->
+            <section id="analysis" class="view-section">
+                <div class="analysis-card">
+                    <div id="analysis-loading">
+                        <div class="spinner"></div>
+                        <h2>Analyzing your profile...</h2>
+                        <p class="text-muted">Mapping your skills to industry requirements.</p>
+                    </div>
+                    <div id="analysis-results" class="hidden">
+                        <h2 class="mb-4">Analysis Complete</h2>
+                        
+                        <div class="analysis-grid">
+                            <div class="analysis-box">
+                                <h3>YOUR CAREER GOAL</h3>
+                                <p id="ar-goal" class="goal-text">Cybersecurity Analyst</p>
+                            </div>
+                            
+                            <div class="analysis-box">
+                                <h3>CURRENT SKILLS</h3>
+                                <ul id="ar-skills" class="check-list success-list">
+                                    <!-- Dynamic -->
+                                </ul>
+                            </div>
+                            
+                            <div class="analysis-box">
+                                <h3>SKILL GAPS</h3>
+                                <ul id="ar-gaps" class="check-list gap-list">
+                                    <!-- Dynamic -->
+                                </ul>
+                            </div>
+                        </div>
+
+                        <button id="btn-go-dashboard" class="btn-primary mt-4">View My Dashboard</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. DASHBOARD SCREEN -->
+            <section id="dashboard" class="view-section">
+                <div class="header-section">
+                    <h2>Dashboard</h2>
+                    <p class="text-muted">Welcome back, <span id="dash-name">Student</span>!</p>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="dash-card col-span-2 primary-card">
+                        <h3>Your Next Step</h3>
+                        <h1 id="dash-next-step" class="accent-text mt-2">Learn Networking</h1>
+                        <button id="btn-jump-resources" class="btn-primary mt-3">View Resources</button>
+                    </div>
+                    
+                    <div class="dash-card">
+                        <h3>Learning Progress</h3>
+                        <div class="progress-wrapper mt-3">
+                            <h2 id="dash-progress-text">62%</h2>
+                            <div class="progress-bar-container">
+                                <div id="dash-progress-fill" class="progress-fill" style="width: 62%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dash-card">
+                        <h3>Career Goal</h3>
+                        <p id="dash-goal" class="goal-text mt-2">Cybersecurity Analyst</p>
+                    </div>
+
+                    <div class="dash-card">
+                        <h3>Current Skills</h3>
+                        <div id="dash-skills" class="chip-container mt-2"></div>
+                    </div>
+
+                    <div class="dash-card">
+                        <h3>Skill Gaps</h3>
+                        <div id="dash-gaps" class="chip-container mt-2 gap-chips"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. ROADMAP SCREEN -->
+            <section id="roadmap" class="view-section">
+                <div class="header-section">
+                    <h2>Personalized Roadmap</h2>
+                    <p class="text-muted">Your step-by-step journey to becoming a <span class="dyn-goal">Professional</span>.</p>
+                </div>
+                
+                <div class="roadmap-container">
+                    <div class="timeline" id="roadmap-timeline">
+                        <!-- Roadmap items generated dynamically -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. RESOURCES SCREEN -->
+            <section id="resources" class="view-section">
+                <div class="header-section">
+                    <h2>Learning Resources</h2>
+                    <p class="text-muted">Curated materials for your current next step: <strong id="res-current-step">Networking</strong></p>
+                </div>
+                
+                <div class="resources-grid" id="resources-grid">
+                    <!-- Resource cards generated dynamically -->
+                </div>
+            </section>
+
+            <!-- 8. PROGRESS SCREEN -->
+            <section id="progress" class="view-section">
+                <div class="header-section">
+                    <h2>Progress Tracking</h2>
+                    <p class="text-muted">Your learning statistics.</p>
+                </div>
+
+                <div class="progress-stats-grid">
+                    <div class="stat-card">
+                        <h4>Overall Progress</h4>
+                        <h2 id="stat-progress">0%</h2>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Modules Completed</h4>
+                        <h2 id="stat-modules">0 / 0</h2>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Learning Hours</h4>
+                        <h2 id="stat-hours">24</h2>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Current Streak</h4>
+                        <h2>7 Days</h2>
+                    </div>
+                </div>
+
+                <div class="chart-container mt-4">
+                    <h3>Progress Visualization</h3>
+                    <div class="css-chart mt-3">
+                        <div class="chart-bar" id="chart-fill" style="width: 0%;"></div>
+                    </div>
+                    <p class="text-muted mt-2 text-center" id="chart-label">0% of Roadmap Completed</p>
+                </div>
+            </section>
+
+            <!-- 9. PROFILE SCREEN -->
+            <section id="profile" class="view-section">
+                <div class="header-section">
+                    <h2>Your Profile</h2>
+                </div>
+                
+                <div class="profile-card">
+                    <div class="profile-row">
+                        <span class="label">Name:</span>
+                        <span id="prof-name" class="value">Demo Student</span>
+                    </div>
+                    <div class="profile-row">
+                        <span class="label">Career Goal:</span>
+                        <span id="prof-goal" class="value">Cybersecurity Analyst</span>
+                    </div>
+                    <div class="profile-row mt-3">
+                        <span class="label">Skills Acquired:</span>
+                        <div id="prof-skills" class="chip-container mt-1"></div>
+                    </div>
+                    
+                    <button id="btn-edit-profile" class="btn-outline mt-4">Edit Profile / Restart</button>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
