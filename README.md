@@ -73,3 +73,41 @@ The main components of the project are as follows:
 		<img width="100%" alt="7" src="https://github.com/user-attachments/assets/7283c55a-6e05-4c29-ae37-691baaa377e8" />
 	</dd>
 </dl>
+
+<h2>
+	Execution & Other
+</h2>
+
+```markdown
+## 🚀 How to Run Locally
+
+Since this is a frontend prototype, running it locally is very simple:
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/kashyupDhruv/jugard-unlimited-prototype.git](https://github.com/kashyupDhruv/jugard-unlimited-prototype.git)
+
+```
+
+2. **Open the application:**
+Navigate to the project folder and open `index.html` in your web browser.
+
+## 🔮 Future Scope
+
+As this is currently a prototype, upcoming features include:
+
+* **Backend Integration:** Moving to a real backend (Node.js/Express) and database.
+* **Authentication:** User login and signup functionality.
+* **Dynamic AI Roadmaps:** Generating fully custom learning paths dynamically.
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+Feel free to check the [issues page](https://www.google.com/search?q=https://github.com/kashyupDhruv/jugard-unlimited-prototype/issues) if you want to contribute.
+
+---
+## Author
+
+<div align="center">
+  <b>Made with ❤️ by <a href="https://github.com/kashyupDhruv">Dhruv Kashyap</a></b>
+</div>
